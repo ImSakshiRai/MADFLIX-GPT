@@ -3,6 +3,15 @@ It replicates the core features of netflix with a twist of GPT.
 With the help of GPT one can get suggestion  for movies, shows and books. 
 According to his mood and wants.
 
+## Working of Project
+- Create React App
+- Header
+- Routing of App
+- Login Form  (made the same form toggle  with the help of variable useState hook)
+- Sign Up Form
+- Form Validation
+- useRef Hook
+
 ## Features
 - Login/Signup page: User can create an account or log in using their email id's (gmail is supported).
      - Sign In /Sing UP Form
