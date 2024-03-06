@@ -11,6 +11,9 @@ According to his mood and wants.
 - Sign Up Form
 - Form Validation
 - useRef Hook
+- Firebase Setup
+- Deploying app to firebase  production
+
 
 ## Features
 - Login/Signup page: User can create an account or log in using their email id's (gmail is supported).
