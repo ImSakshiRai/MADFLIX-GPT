@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
 import Header from './Header';
 import {checkValidData} from '../utils/validate';
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../utils/firebase' //from here functions auth wil get
+
 
 const Login = () => { //state for toggle in forms
   const [isSignInForm, SetIsSignInForm] = useState(true);
@@ -8,19 +11,55 @@ const Login = () => { //state for toggle in forms
  //state for error message displaying on page
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const Name = useRef(null);
+  //const Name = useRef(null);
   const email = useRef(null); //These will create a reference to earlier input mail and pass
   const password = useRef(null);
 
   const handleButtonClick =()=>{
     //validate the form data
-    console.log(Name.current.value);
-   const message = checkValidData(email.current.value,password.current.value, Name.current.value);
+    //console.log(Name.current.value);
+   const message = checkValidData(email.current.value,password.current.value);
    setErrorMessage(message); //here we set the error message whatever will return from this checkVAlidData -ki pswrd shi h ya glt
-  };
-  //If the email and password are vaild 
-  //then procced to Sign In/Sign Up
+    if (message) return ; //if  there is an error it returns without doing anything else
 
+    //If the email and password are vaild 
+   //then procced to Sign In/Sign Up Logic
+   
+  if(!isSignInForm){ //that means it sign up form
+        //Sign Up Logic 
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value, 
+          password.current.value
+          )
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });  
+
+  }else{
+        //Sign In Logic
+      signInWithEmailAndPassword(auth, email.current.value,password.current.value)
+      .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user);
+      })
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+      });   
+  }
+  };
+  
+   
   
   //function for some one click on this will become Sign Up Form
   const toggleSignInForm = ()=> {
@@ -44,7 +83,7 @@ const Login = () => { //state for toggle in forms
 
         {!isSignInForm && ( //agr Sign In form nai h or Sign Up form hh tb input name show kro
           <input type='text'
-          ref={Name} 
+         // ref={Name} 
           placeholder='Full Name' className='p-2 my-4 w-full border rounded-sm text-center bg-neutral-700 text-white'>
           </input>
         )}

@@ -13,6 +13,7 @@ According to his mood and wants.
 - useRef Hook
 - Firebase Setup
 - Deploying app to firebase  production
+- Create Sign Up
 
 
 ## Features
