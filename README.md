@@ -12,8 +12,13 @@ According to his mood and wants.
 - Form Validation
 - useRef Hook
 - Firebase Setup
-- Deploying app to firebase  production
-- Create Sign Up
+- Deploying app to firebase        production
+- Create Sign Up User Account
+- implement Sign In user Api
+- Created Redux Store with UserSlice
+- Implemented Sign Out
+- updated profile Api call
+- showed photo in user icon
 
 
 ## Features

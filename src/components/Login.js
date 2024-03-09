@@ -1,9 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import {checkValidData} from '../utils/validate';
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase' //from here functions auth wil get
-
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => { //state for toggle in forms
   const [isSignInForm, SetIsSignInForm] = useState(true);
@@ -11,14 +13,18 @@ const Login = () => { //state for toggle in forms
  //state for error message displaying on page
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //const Name = useRef(null);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate(); //hook for naviagting the user after sing in & Sign up to browse page 
+
+  const name = useRef(null);
   const email = useRef(null); //These will create a reference to earlier input mail and pass
   const password = useRef(null);
 
   const handleButtonClick =()=>{
     //validate the form data
     //console.log(Name.current.value);
-   const message = checkValidData(email.current.value,password.current.value);
+   const message = checkValidData(email.current.value, password.current.value);
    setErrorMessage(message); //here we set the error message whatever will return from this checkVAlidData -ki pswrd shi h ya glt
     if (message) return ; //if  there is an error it returns without doing anything else
 
@@ -35,7 +41,22 @@ const Login = () => { //state for toggle in forms
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log(user);
+          updateProfile(user, {
+            displayName: name.current.value, 
+            photoURL: "https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100226.jpg?t=st=1709981550~exp=1709985150~hmac=9bf0d0b27a473cd13015196af6893b417764ccbf89fb6c7d8de02ca606a4c1d8&w=740"
+          }).then(() => {
+            // Profile updated!
+            const {uid, email, displayName, photoURL} = auth.currentUser; //this user  will get the updated value from user
+            dispatch(addUser({uid:uid, 
+            email:email,
+            displayName: displayName, 
+            photoURL:photoURL}))
+            navigate("/browse"); // if the user is sign in go to browse
+          }).catch((error) => {
+            // An error occurred
+           setErrorMessage(error.message);//displays the error message
+          });
+          //console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -45,11 +66,12 @@ const Login = () => { //state for toggle in forms
 
   }else{
         //Sign In Logic
-      signInWithEmailAndPassword(auth, email.current.value,password.current.value)
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
       .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse")
       })
       .catch((error) => {
           const errorCode = error.code;
@@ -83,7 +105,7 @@ const Login = () => { //state for toggle in forms
 
         {!isSignInForm && ( //agr Sign In form nai h or Sign Up form hh tb input name show kro
           <input type='text'
-         // ref={Name} 
+           ref={name} 
           placeholder='Full Name' className='p-2 my-4 w-full border rounded-sm text-center bg-neutral-700 text-white'>
           </input>
         )}

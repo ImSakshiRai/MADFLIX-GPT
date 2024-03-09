@@ -2,8 +2,15 @@ import { createBrowserRouter } from 'react-router-dom';
 import Browse from './Browse'
 import Login from './Login'
 import { RouterProvider } from 'react-router-dom';
+import { useEffect } from 'react';
+import {onAuthStateChanged } from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useDispatch } from 'react-redux';
+import {addUser, removeUser} from '../utils/userSlice';
+
 
 const Body = () => {
+    const dispatch = useDispatch();
 
     const appRouter = createBrowserRouter([
         {
@@ -14,7 +21,26 @@ const Body = () => {
             path : "/browse",
             element: <Browse />
         }
-    ])
+    ]);
+
+   //this is like event listener so whe have to call ir for once
+   useEffect(() =>{ //here we will call on state change
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        const {uid, email, displayName, photoURL} = user;
+        dispatch(addUser({uid:uid, 
+          email:email,
+          displayName: displayName, 
+          photoURL:photoURL})) //will add put in store
+      } else {
+        // User is signed out
+        dispatch(removeUser());//will remove from the store
+      }
+    });
+
+   }, [])
+
 
   return (
     <div>
