@@ -1,12 +1,11 @@
 import React, { useState, useRef} from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import {checkValidData} from '../utils/validate';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase' //from here functions auth wil get
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-
+import {USER_AVATAR} from "../utils/constants"
 const Login = () => { //state for toggle in forms
   const [isSignInForm, SetIsSignInForm] = useState(true);
 
@@ -14,8 +13,6 @@ const Login = () => { //state for toggle in forms
   const [errorMessage, setErrorMessage] = useState(null);
 
   const dispatch = useDispatch();
-
-  const navigate = useNavigate(); //hook for naviagting the user after sing in & Sign up to browse page 
 
   const name = useRef(null);
   const email = useRef(null); //These will create a reference to earlier input mail and pass
@@ -43,16 +40,18 @@ const Login = () => { //state for toggle in forms
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value, 
-            photoURL: "https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100226.jpg?t=st=1709981550~exp=1709985150~hmac=9bf0d0b27a473cd13015196af6893b417764ccbf89fb6c7d8de02ca606a4c1d8&w=740"
+            photoURL: USER_AVATAR,
           }).then(() => {
             // Profile updated!
             const {uid, email, displayName, photoURL} = auth.currentUser; //this user  will get the updated value from user
             dispatch(addUser({uid:uid, 
             email:email,
             displayName: displayName, 
-            photoURL:photoURL}))
-            navigate("/browse"); // if the user is sign in go to browse
-          }).catch((error) => {
+            photoURL:photoURL,
+          })
+          );
+          })
+          .catch((error) => {
             // An error occurred
            setErrorMessage(error.message);//displays the error message
           });
@@ -70,8 +69,6 @@ const Login = () => { //state for toggle in forms
       .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse")
       })
       .catch((error) => {
           const errorCode = error.code;

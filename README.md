@@ -12,13 +12,17 @@ According to his mood and wants.
 - Form Validation
 - useRef Hook
 - Firebase Setup
-- Deploying app to firebase        production
+- Deploying app to firebase production
 - Create Sign Up User Account
 - implement Sign In user Api
 - Created Redux Store with UserSlice
 - Implemented Sign Out
 - updated profile Api call
 - showed photo in user icon
+- BugFix - Sign up user displayname & profile picture update
+- BugFix- if the user is  not logged in then redirect to /browse to login page & vice versa 
+- Unsubscribe to the onAuthStateChanged callback
+- Added hard coded values to constant file if we need to change photo url or LOGO from there we can
 
 
 ## Features
