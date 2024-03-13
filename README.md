@@ -23,7 +23,15 @@ According to his mood and wants.
 - BugFix- if the user is  not logged in then redirect to /browse to login page & vice versa 
 - Unsubscribe to the onAuthStateChanged callback
 - Added hard coded values to constant file if we need to change photo url or LOGO from there we can
-
+- Registerd for TMDB API & create an app & get access token 
+- Get Data from TMDB now playing movies list API
+-  Show Movie List Page which contains movie cards showing details
+- created custom hook for nowPlayingMovies & upate the store with movies data
+- created a movie slice
+- planning for MainContainer & SecondaryContainer 
+- Fetch data for trailer video from youtube embded video code and made it autoplay & mute
+- updated the store with trailer video
+- 
 
 ## Features
 - Login/Signup page: User can create an account or log in using their email id's (gmail is supported).

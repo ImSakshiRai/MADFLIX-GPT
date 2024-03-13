@@ -1,0 +1,31 @@
+import { useDispatch } from "react-redux";
+import { API_OPTIONS } from "../utils/constants";
+import { addTrailerVideo } from "../utils/moviesSlice";
+import { useEffect } from "react";
+import VideoBackground from "../components/VideoBackground";
+
+const useMovieTrailer = (movieId) => {
+
+
+    const dispatch = useDispatch();   
+
+    //fetch trailer video && updating the store with the tariler video data
+
+    const getMoviesVideos = async () => {
+       const data = await fetch("https://api.themoviedb.org/3/movie/"+ 
+       movieId +"/videos?language=en-US", API_OPTIONS);
+
+       const json = await data.json();
+       //this will get  trailer of 1st movie shown in main container
+
+       const filterData = json.results.filter(vidies => VideoBackground.type ==="Trailer");
+       const trailer = filterData.lenght ? filterData[0] : json.results[0]; // if there is not trailer available of that movie
+      
+       dispatch(addTrailerVideo(trailer));
+    };
+    useEffect(() =>{
+        getMoviesVideos();
+    },[]);
+}
+
+export default useMovieTrailer;
