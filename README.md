@@ -30,8 +30,15 @@ According to his mood and wants.
 - created a movie slice
 - planning for MainContainer & SecondaryContainer 
 - Fetch data for trailer video from youtube embded video code and made it autoplay & mute
-- updated the store with trailer video
-- 
+- updated the store with trailer video data
+- tailwind css to make mainContiner & secondaryContainer 
+- Build secondary container
+- Build Movies List
+- Build Movies Card
+- AND TMDB IMG_CDN_URl for movies poster
+- And fetch TMDB api of popular movies
+- Added other trending API fetch
+
 
 ## Features
 - Login/Signup page: User can create an account or log in using their email id's (gmail is supported).
