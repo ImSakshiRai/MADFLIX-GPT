@@ -12,3 +12,6 @@ export const API_OPTIONS = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNDgyZTA3NmJkZWU5ZTNjZDg3OGEwYmRkZDNjZDgyNSIsInN1YiI6IjY1ZjAyYmQyOTQ2MzE4MDE4NTYxYjY3MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RNb2nQF_XYGQTcD1YDagHd_SkRwiTiHjKeqK8DUqXmA'
     }
 };
+
+//calling movies poster for moviecards
+export const  IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
