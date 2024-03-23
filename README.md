@@ -38,6 +38,8 @@ According to his mood and wants.
 - AND TMDB IMG_CDN_URl for movies poster
 - And fetch TMDB api of popular movies
 - Added other trending API fetch
+- GPT search Button
+- Made Gpt Search Page
 
 
 ## Features
