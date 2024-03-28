@@ -40,6 +40,9 @@ According to his mood and wants.
 - Added other trending API fetch
 - GPT search Button
 - Made Gpt Search Page
+- Created Gpt search Bar
+- Added multi lang Feature in our App 
+
 
 
 ## Features

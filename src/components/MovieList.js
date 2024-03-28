@@ -6,7 +6,6 @@ const MovieList = ({title, movies}) => {
     if (!movies || movies.length === 0) {
         return null; // or some default UI indicating no movies available
     }
-    console.log(movies);
   return (
     <div className='px-8 '>
         <h1 className='text-3xl py-4 text-white'> {title}</h1>
