@@ -25,3 +25,6 @@ export const  LANGUAGES = [
   { identifier: 'en', name: 'English' },
   { identifier: 'hindi' ,name: 'Hindi' },
   { identifier: 'spanish' ,name: 'Spanish' },]
+
+//GPT OPEN AI KEY ->generated from open ai site it's not free
+export const OPENAI_KEY  = "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"; 
