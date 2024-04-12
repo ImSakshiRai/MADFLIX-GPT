@@ -87,17 +87,18 @@ const Login = () => { //state for toggle in forms
   return (
     <div >
       <Header/>
-      <div className='absolute'>
+      <div className='absolute '>
 
-       <img src={BG_URL}
+       <img className='h-screen w-screen object-cover'
+       src={BG_URL}
        alt='Background'></img>
       </div>
       <form 
         onSubmit={(e) =>e.preventDefault()}//this is used to prevent from reloading page when user press submit button onClick={handleButtonClick} 
 
-        className='w-3/12 absolute  bg-opacity-80 p-12 bg-black my-36 mx-auto right-0 left-0'>
+        className='md:w-3/12 w-full absolute  bg-opacity-80 p-12 bg-black my-36 mx-auto right-0 left-0'>
 
-        <h1 className='font-bold text-3xl py-4 text-white'>
+        <h1 className='font-bold md:text-3xl text-2xl py-4 text-white'>
         {isSignInForm? "Sign In" : "Sign Up"}</h1>
 
         {!isSignInForm && ( //agr Sign In form nai h or Sign Up form hh tb input name show kro

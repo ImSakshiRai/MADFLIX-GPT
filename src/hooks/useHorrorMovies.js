@@ -1,11 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addHorrorMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
 const useHorrorMovies = () => {
-    const dispatch = useDispatch();
+
+  const dispatch = useDispatch();
   
+  const HorrorMovies = useSelector(store=> store.movies.HorrorMovies);
+
   //fetching the movies data from TMDB & putting these movies data in store
   const getHorrorMovies = async  () => {
    const data = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=XXXXX&with_genres=27?page=1',
@@ -19,7 +22,9 @@ const useHorrorMovies = () => {
 
 
   useEffect(()=>{
-    getHorrorMovies();
+
+   !HorrorMovies && getHorrorMovies();
+
   }, [])
 
 }

@@ -25,7 +25,7 @@ const GptSearchBar = () => {
   }
 
   const handleGptSearchClick = async () => {
-    console.log(searchText.current.value);
+    //console.log(searchText.current.value);
     //Make an API call to GPT and Get Movie Results
     
     const gptQuery  = 'Act as a Movie Recommendation system suggedt some movies for the query : ' + 
@@ -40,7 +40,7 @@ const GptSearchBar = () => {
     if(!gptResults.choices){
         return;
     }
-    console.log(gptResults.choices?.message?.content);
+    //console.log(gptResults.choices?.message?.content);
 
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(',');
 
@@ -53,29 +53,29 @@ const GptSearchBar = () => {
 
     const tmdbResults = await  Promise.all(promiseArray);//wait until all promises are resolved
     
-    console.log(tmdbResults);
+    //console.log(tmdbResults);
 
     dispatch(addGptMovieResult({movieNames: gptMovies, movieResults: tmdbResults}));
 
   };
 
   return (
-    <div className='pt-[10%] flex justify-center '>
-        <form 
-          className=' w-1/2 bg-indigo-300 grid grid-cols-12' 
-          onSubmit={(e)=> e.preventDefault()} >
-            <input 
-             ref = {searchText} 
-             type='text' 
-             className='p-4 m-4 col-span-9 rounded-lg '
-             placeholder={lang[langKey].gptSearchPlaceholder}>
-             </input>
-            <button className='col-span-3 m-4 py-2 px-4 bg-fuchsia-700 rounded-lg text-white'
-              onClick={handleGptSearchClick}
-              >
-            {lang[langKey].Search}
-            </button> 
-        </form>
+    <div className='md:pt-[15%] flex justify-center pt-[60%]'>
+      <form 
+        className=' md:w-1/2 w-full md:m-0 m-4  bg-indigo-300 grid grid-cols-12' 
+        onSubmit={(e)=> e.preventDefault()} >
+          <input 
+            ref = {searchText} 
+            type='text' 
+            className='p-4 m-4 col-span-9 rounded-lg '
+            placeholder={lang[langKey].gptSearchPlaceholder}>
+            </input>
+          <button className='col-span-3 md:m-4 md:py-2 md:px-4 my:4 mt-4 mb-4 mr-2 bg-fuchsia-700 rounded-lg text-white'
+            onClick={handleGptSearchClick}
+            >
+          {lang[langKey].Search}
+          </button> 
+      </form>
     </div>
   )
 }

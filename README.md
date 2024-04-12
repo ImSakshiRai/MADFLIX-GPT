@@ -42,6 +42,14 @@ According to his mood and wants.
 - Made Gpt Search Page
 - Created Gpt search Bar
 - Added multi lang Feature in our App 
+- Get Open Ai Api Key
+- Gpt search Apo call
+- fetched gptMovieSuggestions from TMDB
+-  Updated The store with Gpt Suggestion -created gptSlice added data
+- reused Movie List component to make movie suggestion container
+- Memoization
+- Added .env file to gitignore
+- Made responsive 
 
 
 
