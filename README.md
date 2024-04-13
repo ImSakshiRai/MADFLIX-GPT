@@ -24,25 +24,29 @@ According to his mood and wants.
 
 
 ## Technologies Used 🛠️
-- Python
+- TMDB API  : For fetching movie data from The Movie Database
 - OpenAI API (GPT)
-- React
+- React.Js
+- Tailwind CSS
+- Vercel
+- Redux
 - Firebase
--Tailwind CSS
 
 ## Installation and Setup
 1. Clone the repository:
-git clone
+- git clone
 
-2. Navigate to the project directory: cd netflix-gpt
+2. Navigate to the project directory: 
+- cd netflix-gpt
 
 3.Install dependencies using npm:
-create React App
-npm install
-Configured TailwindCSS
+- create React App
+- npm install
+- npm run build
+- Configured TailwindCSS
 
 4. Start the development server:
- npm run start 
+- npm run start 
 
 This will start the development server. Open http://localhost:3000 in your browser to view the application.
 Generate passwords by adjusting the length and selecting options for including numbers and special characters.
