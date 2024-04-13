@@ -1,3 +1,7 @@
+<div align='center'><img style="width:30%" src='![MADFLIX](https://github.com/ImSakshiRai/MADFLIX-GPT/assets/92684307/cf869ac2-095f-4f51-b91a-cd18aa9cb35b)
+'/></div>
+
+
 # MadFlix GPT 🎬📽️🍿
 It replicates the core features of Netflix with a twist of GPT.
 With the help of GPT one can get suggestion  for movies and shows. 
