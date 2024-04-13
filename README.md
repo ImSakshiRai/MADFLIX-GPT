@@ -1,5 +1,4 @@
-<div align='center'><img style="width:30%" src='![MADFLIX](https://github.com/ImSakshiRai/MADFLIX-GPT/assets/92684307/1686549a-6ce3-4358-98cc-65724e4c781d)
-'/></div>
+![MADFLIX](https://github.com/ImSakshiRai/MADFLIX-GPT/assets/92684307/1686549a-6ce3-4358-98cc-65724e4c781d)
 
 # MadFlix GPT 🎬📽️🍿
 It replicates the core features of Netflix with a twist of GPT.
